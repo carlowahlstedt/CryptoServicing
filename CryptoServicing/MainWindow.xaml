@@ -1,0 +1,128 @@
+﻿<Window x:Class="CryptoServicing.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CryptoServicing - Encryption" Height="416" Width="525" Loaded="Window_Loaded">
+    <Grid>
+        <TabControl Margin="12" Name="tabControl1">
+            <TabItem Header="SHA1" Name="tabSHA1">
+                <Grid>
+                    <TextBox Margin="116,8,6,67" Name="txtSHA1PasswordToHash" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                    <Label Content="Password to Hash" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" Name="Label1" VerticalAlignment="Top" />
+                    <Button Content="Encrypt" Height="23" HorizontalAlignment="Right" Margin="0,0,87,38" Name="btnSHA1Encrypt" VerticalAlignment="Bottom" Width="75" Click="btnSHA1Encrypt_Click" />
+                    <TextBox Height="23" Margin="116,0,6,9" Name="txtSHA1EncryptedText" VerticalAlignment="Bottom" />
+                    <Label Content="Encrypted Text" Height="28" HorizontalAlignment="Left" Margin="6,0,0,6" Name="Label3" VerticalAlignment="Bottom" />
+                    <Button Content="Reset" Height="23" HorizontalAlignment="Right" Margin="0,0,6,38" Name="btnSHA1Reset" VerticalAlignment="Bottom" Width="75" Click="btnSHA1Reset_Click" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="MD5" Name="tabMD5">
+                <Grid>
+                    <TextBox Margin="116,8,6,67" Name="txtMD5PasswordToHash" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                    <Label Content="Password to Hash" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" Name="label2" VerticalAlignment="Top" />
+                    <Button Content="Encrypt" Height="23" HorizontalAlignment="Right" Margin="0,0,87,38" Name="btnMD5Encrypt" VerticalAlignment="Bottom" Width="75" Click="btnMD5Encrypt_Click" />
+                    <Button Content="Reset" Height="23" HorizontalAlignment="Right" Margin="0,0,6,38" Name="btnMD5Reset" VerticalAlignment="Bottom" Width="75" Click="btnMD5Reset_Click" />
+                    <TextBox Height="23" Margin="116,0,6,9" Name="txtMD5EncryptedText" VerticalAlignment="Bottom" />
+                    <Label Content="Encrypted Text" Height="28" HorizontalAlignment="Left" Margin="6,0,0,6" Name="label4" VerticalAlignment="Bottom" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="AES" Name="tabAES">
+                <Grid>
+                    <Button Content="Encrypt" Height="23" HorizontalAlignment="Right" Margin="0,0,168,6" Name="btnAESEncrypt" VerticalAlignment="Bottom" Width="75" Click="btnAESEncrypt_Click" IsEnabled="False" />
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="75,9,0,0" Name="cboAESKeySize" VerticalAlignment="Top" Width="191" />
+                    <Label Content="Key Size" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" Name="label5" VerticalAlignment="Top" />
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="75,43,0,0" Name="cboAESMode" VerticalAlignment="Top" Width="191" />
+                    <Label Content="Mode" Height="28" HorizontalAlignment="Left" Margin="6,40,0,0" Name="label6" VerticalAlignment="Top" />
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="75,77,0,0" Name="cboAESPadding" VerticalAlignment="Top" Width="191" />
+                    <Label Content="Padding" Height="28" HorizontalAlignment="Left" Margin="6,74,0,0" Name="label7" VerticalAlignment="Top" />
+                    <TextBox HorizontalAlignment="Left" Margin="75,173,0,35" Name="txtAESInput" Width="191" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" TextChanged="txtAESInput_TextChanged" Height="113" />
+                    <Label Content="Input Text" Height="28" HorizontalAlignment="Left" Margin="6,171,0,0" Name="label8" VerticalAlignment="Top" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="75,110,0,0" Name="txtAESPassword" VerticalAlignment="Top" Width="191" IsReadOnly="True" Background="#FFE2E2E2" />
+                    <Label Content="Password" Height="28" HorizontalAlignment="Left" Margin="6,108,0,0" Name="label9" VerticalAlignment="Top" />
+                    <Label Content="Output" Height="28" HorizontalAlignment="Left" Margin="272,9,0,0" Name="label10" VerticalAlignment="Top" />
+                    <TextBox Margin="272,39,6,35" Name="txtAESOutput" VerticalScrollBarVisibility="Auto" IsReadOnly="True" TextWrapping="Wrap" Background="WhiteSmoke" />
+                    <Button Content="Decrypt" Height="23" HorizontalAlignment="Right" Margin="0,0,87,6" Name="btnAESDecrypt" VerticalAlignment="Bottom" Width="75" Click="btnAESDecrypt_Click" IsEnabled="False" />
+                    <Button Content="Reset" Height="23" HorizontalAlignment="Right" Margin="0,0,6,6" Name="btnAESReset" VerticalAlignment="Bottom" Width="75" Click="btnAESReset_Click" />
+                    <TextBox Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="75,144,0,0" Name="txtAESIV" VerticalAlignment="Top" Width="191" Background="#FFE2E2E2" />
+                    <Label Content="Salt / IV" Height="28" HorizontalAlignment="Left" Margin="6,142,0,0" Name="label11" VerticalAlignment="Top" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="RijndaelManaged" Name="tabRijndaelManaged">
+                <Grid>
+                    <Button Content="Encrypt" Height="23" HorizontalAlignment="Right" IsEnabled="False" Margin="0,0,168,6" Name="btnRMEncrypt" VerticalAlignment="Bottom" Width="75" Click="btnRMEncrypt_Click" />
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="75,9,0,0" Name="cboRMKeySize" VerticalAlignment="Top" Width="191" />
+                    <Label Content="Key Size" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" Name="label19" VerticalAlignment="Top" />
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="75,43,0,0" Name="cboRMMode" VerticalAlignment="Top" Width="191" />
+                    <Label Content="Mode" Height="28" HorizontalAlignment="Left" Margin="6,40,0,0" Name="label20" VerticalAlignment="Top" />
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="75,77,0,0" Name="cboRMPadding" VerticalAlignment="Top" Width="191" />
+                    <Label Content="Padding" Height="28" HorizontalAlignment="Left" Margin="6,74,0,0" Name="label21" VerticalAlignment="Top" />
+                    <TextBox Height="113" HorizontalAlignment="Left" Margin="75,173,0,35" Name="txtRMInput" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Width="191" TextChanged="txtRMInput_TextChanged" />
+                    <Label Content="Input Text" Height="28" HorizontalAlignment="Left" Margin="6,171,0,0" Name="label22" VerticalAlignment="Top" />
+                    <TextBox Background="#FFE2E2E2" Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="75,110,0,0" Name="txtRMPassword" VerticalAlignment="Top" Width="191" />
+                    <Label Content="Password" Height="28" HorizontalAlignment="Left" Margin="6,108,0,0" Name="label23" VerticalAlignment="Top" />
+                    <Label Content="Output" Height="28" HorizontalAlignment="Left" Margin="272,9,0,0" Name="label24" VerticalAlignment="Top" />
+                    <TextBox Background="WhiteSmoke" IsReadOnly="True" Margin="272,39,6,35" Name="txtRMOutput" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                    <Button Content="Decrypt" Height="23" HorizontalAlignment="Right" IsEnabled="False" Margin="0,0,87,6" Name="btnRMDecrypt" VerticalAlignment="Bottom" Width="75" Click="btnRMDecrypt_Click" />
+                    <Button Content="Reset" Height="23" HorizontalAlignment="Right" Margin="0,0,6,6" Name="btnRMReset" VerticalAlignment="Bottom" Width="75" Click="btnRMReset_Click" />
+                    <TextBox Background="#FFE2E2E2" Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="75,144,0,0" Name="txtRMIV" VerticalAlignment="Top" Width="191" />
+                    <Label Content="Salt / IV" Height="28" HorizontalAlignment="Left" Margin="6,142,0,0" Name="label25" VerticalAlignment="Top" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="DES" Name="tabDES">
+                <Grid>
+                    <Button Content="Encrypt" Height="23" HorizontalAlignment="Right" Margin="0,0,168,6" Name="btnDESEncrypt" VerticalAlignment="Bottom" Width="75" Click="btnDESEncrypt_Click" IsEnabled="False" />
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="75,9,0,0" Name="cboDESKeySize" VerticalAlignment="Top" Width="191" />
+                    <Label Content="Key Size" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" Name="label12" VerticalAlignment="Top" />
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="75,43,0,0" Name="cboDESMode" VerticalAlignment="Top" Width="191" />
+                    <Label Content="Mode" Height="28" HorizontalAlignment="Left" Margin="6,40,0,0" Name="label13" VerticalAlignment="Top" />
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="75,77,0,0" Name="cboDESPadding" VerticalAlignment="Top" Width="191" />
+                    <Label Content="Padding" Height="28" HorizontalAlignment="Left" Margin="6,74,0,0" Name="label14" VerticalAlignment="Top" />
+                    <TextBox Height="113" HorizontalAlignment="Left" Margin="75,173,0,35" Name="txtDESInput" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Width="191" TextChanged="txtDESInput_TextChanged" />
+                    <Label Content="Input Text" Height="28" HorizontalAlignment="Left" Margin="6,171,0,0" Name="label15" VerticalAlignment="Top" />
+                    <TextBox Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="75,110,0,0" Name="txtDESPassword" VerticalAlignment="Top" Width="191" Background="#FFE2E2E2" />
+                    <Label Content="Password" Height="28" HorizontalAlignment="Left" Margin="6,108,0,0" Name="label16" VerticalAlignment="Top" />
+                    <Label Content="Output" Height="28" HorizontalAlignment="Left" Margin="272,9,0,0" Name="label17" VerticalAlignment="Top" />
+                    <TextBox IsReadOnly="True" Margin="272,39,6,35" Name="txtDESOutput" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Background="WhiteSmoke" />
+                    <TextBox Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="75,144,0,0" Name="txtDESIV" VerticalAlignment="Top" Width="191" Background="#FFE2E2E2" />
+                    <Label Content="Salt / IV" Height="28" HorizontalAlignment="Left" Margin="6,142,0,0" Name="label18" VerticalAlignment="Top" />
+                    <Button Content="Decrypt" Height="23" HorizontalAlignment="Right" Margin="0,0,87,6" Name="btnDESDecrypt" VerticalAlignment="Bottom" Width="75" Click="btnDESDecrypt_Click" IsEnabled="False" />
+                    <Button Content="Reset" Height="23" HorizontalAlignment="Right" Margin="0,0,6,6" Name="btnDESReset" VerticalAlignment="Bottom" Width="75" Click="btnDESReset_Click" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="TripleDES" Name="tabTripleDES">
+                <Grid>
+                    <Button Content="Encrypt" Height="23" HorizontalAlignment="Right" Margin="0,0,168,6" Name="btnTripleDESEncrypt" VerticalAlignment="Bottom" Width="75" Click="btnTripleDESEncrypt_Click" IsEnabled="False" />
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="75,9,0,0" Name="cboTripleDESKeySize" VerticalAlignment="Top" Width="191" />
+                    <Label Content="Key Size" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" Name="label26" VerticalAlignment="Top" />
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="75,43,0,0" Name="cboTripleDESMode" VerticalAlignment="Top" Width="191" />
+                    <Label Content="Mode" Height="28" HorizontalAlignment="Left" Margin="6,40,0,0" Name="label27" VerticalAlignment="Top" />
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="75,77,0,0" Name="cboTripleDESPadding" VerticalAlignment="Top" Width="191" />
+                    <Label Content="Padding" Height="28" HorizontalAlignment="Left" Margin="6,74,0,0" Name="label28" VerticalAlignment="Top" />
+                    <TextBox Height="113" HorizontalAlignment="Left" Margin="75,173,0,35" Name="txtTripleDESInput" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Width="191" TextChanged="txtTripleDESInput_TextChanged" />
+                    <Label Content="Input Text" Height="28" HorizontalAlignment="Left" Margin="6,171,0,0" Name="label29" VerticalAlignment="Top" />
+                    <TextBox Background="#FFE2E2E2" Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="75,110,0,0" Name="txtTripleDESPassword" VerticalAlignment="Top" Width="191" />
+                    <Label Content="Password" Height="28" HorizontalAlignment="Left" Margin="6,108,0,0" Name="label30" VerticalAlignment="Top" />
+                    <Label Content="Output" Height="28" HorizontalAlignment="Left" Margin="272,9,0,0" Name="label31" VerticalAlignment="Top" />
+                    <TextBox Background="WhiteSmoke" IsReadOnly="True" Margin="272,39,6,35" Name="txtTripleDESOutput" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                    <TextBox Background="#FFE2E2E2" Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="75,144,0,0" Name="txtTripleDESIV" VerticalAlignment="Top" Width="191" />
+                    <Label Content="Salt / IV" Height="28" HorizontalAlignment="Left" Margin="6,142,0,0" Name="label32" VerticalAlignment="Top" />
+                    <Button Content="Decrypt" Height="23" HorizontalAlignment="Right" IsEnabled="False" Margin="0,0,87,6" Name="btnTripleDESDecrypt" VerticalAlignment="Bottom" Width="75" Click="btnTripleDESDecrypt_Click" />
+                    <Button Content="Reset" Height="23" HorizontalAlignment="Right" Margin="0,0,6,6" Name="btnTripleDESReset" VerticalAlignment="Bottom" Width="75" Click="btnTripleDESReset_Click" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="DSA" Name="tabDSA">
+                <Grid>
+                    <Button Content="Encrypt" Height="23" HorizontalAlignment="Right" Margin="0,10,384,0" Name="btnDSAEncrypt" VerticalAlignment="Top" Width="75" Click="btnDSAEncrypt_Click" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="RNG" Name="tabRNG">
+                <Grid>
+                    <Button Content="Encrypt" Height="23" HorizontalAlignment="Right" Margin="0,10,384,0" Name="btnRNGEncrypt" VerticalAlignment="Top" Width="75" Click="btnRNGEncrypt_Click" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="RSA" Name="tabRSA">
+                <Grid>
+                    <Button Content="Encrypt" Height="23" HorizontalAlignment="Right" Margin="0,10,384,0" Name="btnRSAEncrypt" VerticalAlignment="Top" Width="75" Click="btnRSAEncrypt_Click" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
